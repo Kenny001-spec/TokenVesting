@@ -9,7 +9,9 @@ library VestingLib {
         uint256 releasedAmount;
     }
 
-    function releasableAmount(VestingSchedule storage schedule) internal view returns (uint256) {
+    function releasableAmount(
+        VestingSchedule storage schedule
+    ) internal view returns (uint256) {
         if (block.timestamp < schedule.start) {
             return 0;
         }
@@ -27,8 +29,14 @@ library VestingLib {
         return vestedAmount - schedule.releasedAmount;
     }
 
-    function release(VestingSchedule storage schedule, uint256 amount) internal {
-        require(amount <= releasableAmount(schedule), "Insufficient vested tokens");
+    function release(
+        VestingSchedule storage schedule,
+        uint256 amount
+    ) internal {
+        require(
+            amount <= releasableAmount(schedule),
+            "Insufficient vested tokens"
+        );
         schedule.releasedAmount += amount;
     }
 }

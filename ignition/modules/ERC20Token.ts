@@ -1,11 +1,11 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const DltTokenModule = buildModule("DltTokenModule", (m) => {
-  const dlttoken = m.contract("DltToken");
+const CeloTokenModule = buildModule("CeloTokenModule", (m) => {
+  const celotoken = m.contract("CeloToken");
  
-  return { dlttoken };
+  return { celotoken };
   
 });
 
-export default DltTokenModule;
+export default CeloTokenModule;
 
